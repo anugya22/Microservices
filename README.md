@@ -1,4 +1,4 @@
-# 🔧 IoT Device Management Microservices
+#  IoT Device Management Microservices
 
 This project is a **microservices-based device management system** built using **NestJS**, **MongoDB**, **RabbitMQ**, and **JWT authentication**.
 
