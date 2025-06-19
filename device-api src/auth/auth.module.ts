@@ -8,7 +8,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
-    ConfigModule, // 👈 Import it here
+    ConfigModule, 
     PassportModule,
     JwtModule.registerAsync({
       imports: [ConfigModule],
