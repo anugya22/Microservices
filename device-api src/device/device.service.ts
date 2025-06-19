@@ -4,18 +4,18 @@ import { Model } from 'mongoose';
 import { Device } from './device.schema';
 import { CreateDeviceDto } from './dto/create-device.dto';
 import { UpdateDeviceDto } from './dto/update-device.dto';
-import { RabbitMQService } from '../rabbitmq/rabbitmq.service'; // 👈 Import
+import { RabbitMQService } from '../rabbitmq/rabbitmq.service'; 
 
 @Injectable()
 export class DevicesService {
   constructor(
     @InjectModel(Device.name) private model: Model<Device>,
-    private readonly rabbitmqService: RabbitMQService // 👈 Inject
+    private readonly rabbitmqService: RabbitMQService 
   ) {}
 
   async create(dto: CreateDeviceDto) {
     const device = await this.model.create(dto);
-    // 👇 Publish device to RabbitMQ
+    // Publish device to RabbitMQ
     this.rabbitmqService.publishToQueue({
       type: 'device_created',
       data: device,
