@@ -1,7 +1,6 @@
 import * as amqp from 'amqplib';
 import * as mongoose from 'mongoose';
 
-// Define your schema
 const deviceSchema = new mongoose.Schema({
   name: String,
   status: String,
@@ -11,7 +10,7 @@ const deviceSchema = new mongoose.Schema({
 const Device = mongoose.model('Device', deviceSchema);
 
 async function bootstrap() {
-  await mongoose.connect('mongodb://localhost:27017/device_db'); // ✅ updated
+  await mongoose.connect('mongodb://localhost:27017/device_db'); 
 
   const connection = await amqp.connect('amqp://localhost');
   const channel = await connection.createChannel();
