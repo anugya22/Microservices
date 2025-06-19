@@ -4,7 +4,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { DevicesModule } from './device/device.module';
 import { BulkModule } from './bulk/bulk.module';
-import { RabbitMQModule } from './rabbitmq/rabbitmq.module'; // ✅ Use module, not just service
+import { RabbitMQModule } from './rabbitmq/rabbitmq.module'; 
 
 @Module({
   imports: [
@@ -19,7 +19,7 @@ import { RabbitMQModule } from './rabbitmq/rabbitmq.module'; // ✅ Use module, 
     AuthModule,
     DevicesModule,
     BulkModule,
-    RabbitMQModule, // ✅ Include here
+    RabbitMQModule, 
   ],
 })
 export class AppModule {}
