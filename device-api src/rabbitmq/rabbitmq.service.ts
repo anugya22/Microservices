@@ -8,11 +8,11 @@ export class RabbitMQService implements OnModuleInit {
   async onModuleInit() {
     const connection: Connection = await connect('amqp://localhost');
     this.channel = await connection.createChannel();
-    await this.channel.assertQueue('device_updates', { durable: true }); // ✅ durable
+    await this.channel.assertQueue('device_updates', { durable: true }); 
   }
 
   publishToQueue(message: any) {
     const buffer = Buffer.from(JSON.stringify(message));
-    this.channel.sendToQueue('device_updates', buffer, { persistent: true }); // ✅ persistent
+    this.channel.sendToQueue('device_updates', buffer, { persistent: true }); 
   }
 }
