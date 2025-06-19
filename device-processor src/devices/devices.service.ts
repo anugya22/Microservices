@@ -10,7 +10,7 @@ export class DeviceService {
   async bulkUpdate(devices: any[]) {
     for (const device of devices) {
       await this.model.findOneAndUpdate(
-        { name: device.name }, // Assuming "name" is the identifier
+        { name: device.name }, 
         { $set: device },
         { upsert: true, new: true }
       );
