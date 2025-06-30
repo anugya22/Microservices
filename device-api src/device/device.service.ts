@@ -54,7 +54,7 @@ export class DevicesService {
     if (!result) throw new NotFoundException('Device not found');
 
     
-    await this.searchService.remove('asset_prod', id);
+    await this.searchService.remove('device_index', id);
 
     return result;
   }
