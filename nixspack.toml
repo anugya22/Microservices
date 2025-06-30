@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = ["nodejs"]
+
+[phases.build]
+cmds = ["cd device-api && npm install"]
+
+[phases.start]
+cmd = "cd device-api && npm run start:prod"
