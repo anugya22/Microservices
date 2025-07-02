@@ -1,13 +1,19 @@
 import { Module } from '@nestjs/common';
 import { ElasticsearchModule } from '@nestjs/elasticsearch';
 import { SearchService } from './search.service';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
-    ElasticsearchModule.register({
-      node: process.env.ELASTIC_NODE, // Bonsai or local Elasticsearch URL
+    ConfigModule.forRoot({
+      isGlobal: true, 
+    }),
+    ElasticsearchModule.registerAsync({
+      imports: [ConfigModule],
+      useFactory: (configService: ConfigService) => ({
+        node: configService.get<string>('ELASTICSEARCH_NODE'),
+      }),
+      inject: [ConfigService],
     }),
   ],
   providers: [SearchService],
